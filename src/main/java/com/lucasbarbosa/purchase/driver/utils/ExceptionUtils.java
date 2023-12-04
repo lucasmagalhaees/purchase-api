@@ -7,16 +7,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ExceptionUtils {
-
-  private static final String BOOK = "book";
-  private static final String SELLER = "seller";
-  private static final String TITLE = "title";
-  private static final String INFO = "with given value(s)";
 
   private static final String ATTRIBUTE_IN_USE = "attribute.in.use";
   private static final String MESSAGE_NOT_READABLE = "message.not.readable";
@@ -24,22 +16,6 @@ public class ExceptionUtils {
 
   public static final int BAD_REQUEST = 400;
   public static final int NOT_FOUND = 404;
-
-  public static String getTitleAsConst() {
-    return TITLE;
-  }
-
-  public static String getBookAsConst() {
-    return BOOK;
-  }
-
-  public static String getSellerAsConst() {
-    return SELLER;
-  }
-
-  public static String getInfoAsConst() {
-    return INFO;
-  }
 
   public static String getAttributeInUseReference() {
     return ATTRIBUTE_IN_USE;

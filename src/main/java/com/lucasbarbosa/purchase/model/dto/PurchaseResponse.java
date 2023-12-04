@@ -1,5 +1,6 @@
 package com.lucasbarbosa.purchase.model.dto;
 
+import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,5 +14,5 @@ public class PurchaseResponse {
 
   private String transactionDate;
 
-  private String purchaseAmount;
+  private BigDecimal purchaseAmount;
 }

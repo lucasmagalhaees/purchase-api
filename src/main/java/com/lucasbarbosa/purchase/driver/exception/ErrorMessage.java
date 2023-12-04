@@ -9,9 +9,6 @@ import lombok.Getter;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.validation.BindingResult;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 public class ErrorMessage {
 
   @Getter private final List<String> errors;

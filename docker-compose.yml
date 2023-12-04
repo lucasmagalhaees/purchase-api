@@ -4,28 +4,28 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: lucasbarbosa
-      POSTGRES_PASSWORD: lucas123
-      POSTGRES_DB: library_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: purchase_db
     ports:
       - "5400:5432"
     networks:
-      - library-network
-  libraryapi:
+      - purchase-network
+  purchaseapi:
     build: .
-    container_name: library_api
+    container_name: purchase_api
     restart: always
     environment:
       PROFILE: stage
-      DATABASE_URL: jdbc:postgresql://db:5432/library_db?useSSL=false
-      DATABASE_USERNAME: lucasbarbosa
-      DATABASE_PASSWORD: lucas123
+      DATABASE_URL: jdbc:postgresql://db:5432/purchase_db?useSSL=false
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
     ports:
       - "9092:9090"
     depends_on:
       - db
     networks:
-      - library-network
+      - purchase-network
 networks:
-  library-network:
+  purchase-network:
     driver: bridge

@@ -4,9 +4,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import lombok.*;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @Getter
 @Setter
 @Builder

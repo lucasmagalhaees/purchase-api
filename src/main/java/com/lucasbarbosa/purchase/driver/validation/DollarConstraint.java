@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DollarConstraint {
-  String message() default "Invalid currency format. The valid format is XX.XX";
+  String message() default "Please provide a valid amount in the format YY.YY";
 
   Class<?>[] groups() default {};
 

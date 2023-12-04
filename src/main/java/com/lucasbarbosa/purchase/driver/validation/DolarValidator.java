@@ -14,8 +14,7 @@ public class DolarValidator implements ConstraintValidator<DollarConstraint, Str
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     try {
-      PurchaseUtils.parseAmount(value);
-      return true;
+      return PurchaseUtils.parseAmount(value) > 0;
     } catch (Exception e) {
       return false;
     }

@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @RestControllerAdvice
 public class PurchaseApiExceptionHandler {
 

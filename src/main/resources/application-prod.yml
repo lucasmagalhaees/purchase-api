@@ -1,7 +1,7 @@
 server:
   port: ${PORT}
   servlet:
-    context-path: /purchase
+    context-path: /purchase-api
 
 spring:
   spring:

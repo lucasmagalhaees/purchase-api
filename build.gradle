@@ -197,8 +197,9 @@ jacocoTestCoverageVerification {
 }
 
 check.dependsOn contractTest
+check.dependsOn spotlessApply
 
-bootRun.dependsOn build, spotlessApply
+bootRun.dependsOn build
 
 test {
     useJUnitPlatform()

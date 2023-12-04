@@ -10,9 +10,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -29,8 +26,8 @@ public class SwaggerConfig {
 
   private ApiInfo metaData() {
     return new ApiInfoBuilder()
-        .title("LibraryAPI")
-        .description("API designed for library maintainance purpose")
+        .title("PurchaseAPI")
+        .description("API designed for purchase maintainance purpose")
         .version("1.0.0")
         .license("Apache License Version 2.0")
         .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")

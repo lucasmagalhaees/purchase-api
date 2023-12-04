@@ -1,10 +1,6 @@
 package com.lucasbarbosa.purchase.model.entity;
 
-import com.lucasbarbosa.purchase.driver.utils.DateUtils;
-import com.lucasbarbosa.purchase.driver.utils.PurchaseUtils;
-import com.lucasbarbosa.purchase.model.dto.PurchaseResponse;
 import java.time.LocalDate;
-import java.util.function.Function;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,17 +32,4 @@ public class Purchase {
 
   @Column(name = "purchase_amount")
   private Long purchaseAmount;
-
-  public PurchaseResponse toReponse() {
-    return assembler.apply(this);
-  }
-
-  private static final Function<Purchase, PurchaseResponse> assembler =
-      model ->
-          PurchaseResponse.builder()
-              .purchaseId(model.getPurchaseId())
-              .description(model.getDescription())
-              .transactionDate(DateUtils.formatDate(model.getTransactionDate()))
-              .purchaseAmount(PurchaseUtils.centsToDollars(model.getPurchaseAmount()).toString())
-              .build();
 }

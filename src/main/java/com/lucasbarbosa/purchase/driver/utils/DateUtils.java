@@ -7,9 +7,6 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtils {
 

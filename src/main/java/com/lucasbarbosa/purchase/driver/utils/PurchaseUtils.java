@@ -2,13 +2,11 @@ package com.lucasbarbosa.purchase.driver.utils;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import com.lucasbarbosa.purchase.feign.IntegrationParamEnum;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -16,12 +14,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.util.ObjectUtils;
 
-/**
- * @author Lucas Barbosa on 27/06/2021
- */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseUtils {
 
@@ -106,12 +100,5 @@ public class PurchaseUtils {
 
   public static boolean areAllPresent(List<Optional<?>> optionalList) {
     return optionalList.stream().allMatch(Optional::isPresent);
-  }
-
-  public static String searchMapByParam(
-      Optional<Map<String, Object>> params, IntegrationParamEnum key) {
-    return params
-        .map(mapParams -> mapParams.get(key.getValue()).toString())
-        .orElse(StringUtils.EMPTY);
   }
 }

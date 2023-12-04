@@ -1,7 +1,7 @@
 server:
   port: 9090
   servlet:
-    context-path: /purchase 
+    context-path: /purchase-api
 
 spring:
   flyway:
@@ -23,18 +23,6 @@ eureka:
 
 feign:
   client:
-    stock:
-      url: http://www.randomnumberapi.com/api/v1.0
-    agify:
-      url: https://api.agify.io/
-    nationalize:
-      url: https://api.nationalize.io/
-    country:
-      url: https://restcountries.com/v3.1/alpha
-    product:
-      url: https://random-data-api.com/api/number/random_number
-    user:
-      url: https://random-data-api.com/api/
 
 seller:
   token:
