@@ -1,4 +1,4 @@
-CREATE TABLE public.tb_purchase (
+CREATE TABLE public.purchases (
                                 purchase_id VARCHAR(50) NOT NULL,
                                 description VARCHAR(50) NOT NULL,
                                 transaction_date DATE NOT NULL,
