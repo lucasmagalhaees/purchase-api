@@ -30,7 +30,7 @@ feign:
     stock:
       url: http://www.randomnumberapi.com/api/v1.0
     agify:
-      url: https://api.agify.io/
+      url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/
     nationalize:
       url: https://api.nationalize.io/
     country:

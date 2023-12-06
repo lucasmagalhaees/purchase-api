@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DateConstraint {
-  String message() default "Please provide a valid date in the format dd/MM/yyyy";
+  String message() default "Please provide a valid date in the format MM/dd/yyyy";
 
   Class<?>[] groups() default {};
 

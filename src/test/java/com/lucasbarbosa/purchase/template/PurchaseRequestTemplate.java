@@ -8,7 +8,7 @@ public class PurchaseRequestTemplate {
     return PurchaseRequest.builder()
         .purchaseAmount(amount)
         .description("The amount to purchase")
-        .transactionDate("02/10/2020")
+        .transactionDate("10/02/2020")
         .build();
   }
 
@@ -16,7 +16,7 @@ public class PurchaseRequestTemplate {
     return PurchaseRequest.builder()
         .purchaseAmount("10.45")
         .description("The amount to purchase")
-        .transactionDate("02/10/2020")
+        .transactionDate("10/02/2020")
         .build();
   }
 

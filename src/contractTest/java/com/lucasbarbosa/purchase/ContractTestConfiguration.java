@@ -1,7 +1,7 @@
 package com.lucasbarbosa.purchase;
 
 import com.lucasbarbosa.purchase.api.PurchaseController;
-import com.lucasbarbosa.purchase.service.PurchaseService;
+import com.lucasbarbosa.purchase.service.impl.PurchaseServiceImpl;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,5 +12,5 @@ public class ContractTestConfiguration {
 
   @MockBean private PurchaseController purchaseController;
 
-  @MockBean private PurchaseService purchaseService;
+  @MockBean private PurchaseServiceImpl purchaseService;
 }

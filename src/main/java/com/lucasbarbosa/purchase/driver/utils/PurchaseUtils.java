@@ -19,7 +19,7 @@ import org.springframework.util.ObjectUtils;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseUtils {
 
-  private static final String COMMA = ", ";
+  private static final String COMMA = ",";
   private static final String BLANK_SEPARATOR = " ";
   public static final int ONE = 1;
   public static final int ONE_THOUSAND = 1000;

@@ -23,11 +23,5 @@ eureka:
 
 feign:
   client:
-
-seller:
-  token:
-    validity: 60
-
-stock:
-  minStock: 1
-  maxStock: 10
+    treasury:
+      url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/

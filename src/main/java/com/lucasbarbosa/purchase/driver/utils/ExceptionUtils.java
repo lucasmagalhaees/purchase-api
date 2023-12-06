@@ -13,9 +13,18 @@ public class ExceptionUtils {
   private static final String ATTRIBUTE_IN_USE = "attribute.in.use";
   private static final String MESSAGE_NOT_READABLE = "message.not.readable";
   private static final String FEIGN_INTEGRATION = "service.not.available";
+  private static final String ENTITY_NOT_FOUND = "entity.not.found";
 
   public static final int BAD_REQUEST = 400;
   public static final int NOT_FOUND = 404;
+
+  public static final String PURCHASE = "purchase";
+
+  public static final String PURCHASE_ID = "purchase_id";
+
+  public static String getEntityNotFoundReference() {
+    return ENTITY_NOT_FOUND;
+  }
 
   public static String getAttributeInUseReference() {
     return ATTRIBUTE_IN_USE;

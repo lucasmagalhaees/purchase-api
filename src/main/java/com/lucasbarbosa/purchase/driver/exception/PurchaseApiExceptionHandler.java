@@ -4,6 +4,7 @@ import static com.lucasbarbosa.purchase.driver.utils.ExceptionUtils.*;
 import static com.lucasbarbosa.purchase.driver.utils.PurchaseUtils.createEmptyStringArray;
 
 import com.lucasbarbosa.purchase.driver.exception.custom.AttributeInUseException;
+import com.lucasbarbosa.purchase.driver.exception.custom.EntityNotFoundException;
 import com.lucasbarbosa.purchase.driver.exception.custom.FeignIntegrationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -26,7 +27,7 @@ public class PurchaseApiExceptionHandler {
   }
 
   @ExceptionHandler(FeignIntegrationException.class)
-  @ResponseStatus(HttpStatus.NOT_FOUND)
+  @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
   public ErrorResponse handleFeignIntegrationException(
       HttpServletRequest request, FeignIntegrationException ex) {
     var errorMessage =
@@ -62,6 +63,19 @@ public class PurchaseApiExceptionHandler {
         new ErrorMessage(
             messageSource.getMessage(
                 getAttributeInUseReference(),
+                buildWithThreeParams(ex.getFirst(), ex.getSecond(), ex.getThird()),
+                LocaleContextHolder.getLocale()));
+    return ErrorResponse.ofErrorMessage(request, errorMessage, BAD_REQUEST);
+  }
+
+  @ExceptionHandler(AttributeInUseException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ErrorResponse handleEntityNotFoundException(
+      HttpServletRequest request, EntityNotFoundException ex) {
+    var errorMessage =
+        new ErrorMessage(
+            messageSource.getMessage(
+                getEntityNotFoundReference(),
                 buildWithThreeParams(ex.getFirst(), ex.getSecond(), ex.getThird()),
                 LocaleContextHolder.getLocale()));
     return ErrorResponse.ofErrorMessage(request, errorMessage, BAD_REQUEST);
