@@ -24,7 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class PurchaseServiceTest extends PurchaseServiceTestSupport {
 
   @Test
-  void testFindPurchase_Success() {
+  void itShouldFindPurchase() {
     String purchaseId = "exampleId";
     Purchase expectedPurchase = new Purchase();
     when(repository.findById(purchaseId)).thenReturn(Optional.of(expectedPurchase));
@@ -33,7 +33,7 @@ class PurchaseServiceTest extends PurchaseServiceTestSupport {
   }
 
   @Test
-  void testSavePurchase() {
+  void itShouldSavePurchase() {
     PurchaseRequest purchaseRequest = PurchaseRequestTemplate.buildDefault();
     PurchaseResponse expectedResponse = PurchaseResponseTemplate.buildDefault();
     Purchase expectedPurchase = PurchaseTemplate.buildWithPurchaseId();
@@ -43,14 +43,13 @@ class PurchaseServiceTest extends PurchaseServiceTestSupport {
   }
 
   @Test
-  void testFindPurchase_EntityNotFoundException() {
+  void itShouldEntityNotFoundExceptionWhenPurchaseIsNotFound() {
     String purchaseId = "nonexistentId";
     when(repository.findById(purchaseId)).thenReturn(Optional.empty());
     assertThrows(EntityNotFoundException.class, () -> service.findPurchase(purchaseId));
   }
 
   @Test
-  @DisplayName("Given 3 decimal cases it should round to nearest cent")
   void itShouldRoundAmountCorrectly() {
     assertEquals(
         10045, service.toDomain(buildWithAmount("100.448")).getPurchaseAmount().longValue());
@@ -63,14 +62,12 @@ class PurchaseServiceTest extends PurchaseServiceTestSupport {
   }
 
   @Test
-  @DisplayName("Given a purchase request it should convert to domain")
   void itShouldProperlyConvertToDomain() {
     assertThat(service.toDomain(PurchaseRequestTemplate.buildDefault()))
         .isEqualToIgnoringGivenFields(PurchaseTemplate.buildDefault(), "purchaseId");
   }
 
   @Test
-  @DisplayName("Given a purchase it should convert to response")
   void itShouldProperlyConvertToReponse() {
     assertThat(service.toResponse(PurchaseTemplate.buildDefault()))
         .isEqualToIgnoringGivenFields(PurchaseResponseTemplate.buildDefault(), "purchaseId");

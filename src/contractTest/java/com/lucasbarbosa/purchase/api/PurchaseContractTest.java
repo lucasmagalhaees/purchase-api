@@ -18,8 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PurchaseContractTest extends PurchaseContractTestSupport {
 
   @Test
-  @DisplayName(
-      "Given unsuitable date value and zero amount, then return BAD REQUEST with field validation message")
   public void givenUnsuitableDateFormatAndZeroAmountThenReturnBadRequest() throws Exception {
 
     writeAsJson(buildWithWrongDateFormatAndZeroAmount());
@@ -29,8 +27,6 @@ public class PurchaseContractTest extends PurchaseContractTestSupport {
   }
 
   @Test
-  @DisplayName(
-      "Given null description and wrong amount format, then return BAD REQUEST with field validation message")
   public void givenNullDescriptionAndWrongAmountFormatThenReturnBadRequest() throws Exception {
 
     writeAsJson(buildWithNullDescriptionAndWrongAmountFormat());
@@ -40,8 +36,6 @@ public class PurchaseContractTest extends PurchaseContractTestSupport {
   }
 
   @Test
-  @DisplayName(
-      "Given future date and empty description, then return BAD REQUEST with field validation message")
   public void givenEmptyDescriptionAndFutureDateThenReturnBadRequest() throws Exception {
 
     writeAsJson(PurchaseRequestTemplate.buildWithEmptyDescriptionAndFutureDate());
