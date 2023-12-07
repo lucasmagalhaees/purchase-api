@@ -20,7 +20,7 @@ public class PurchaseRequest {
   private String description;
 
   @DateConstraint
-  @ApiModelProperty(value = "date of purchase", example = "dd/MM/yyyy", required = true)
+  @ApiModelProperty(value = "date of purchase", example = "MM/dd/yyyy", required = true)
   private String transactionDate;
 
   @DollarConstraint
