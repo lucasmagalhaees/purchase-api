@@ -54,7 +54,21 @@ Executes flyway migration considering specify environment
     ./gradlew flywayMigrate -Penv=qa
 
 
-## Running sonarqube
+## Using Cache
+
+Integration with Treasury API was cacheable to increase the application performance. Cache was configured using Google Guava dependency and a ttl property was set on the project properties.  
+
+## Running Jacoco
+
+Run the following command
+
+    ./gradlew clean build
+
+It will trigger Jacoco test coverage and the report can be found in
+
+    /build/jacoco/test/html/index.html
+
+## Running Sonarqube
 
 Override gradle.properties with your own sonar config and run the following command
 
