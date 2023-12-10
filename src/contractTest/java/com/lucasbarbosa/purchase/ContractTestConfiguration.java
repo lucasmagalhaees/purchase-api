@@ -1,7 +1,7 @@
 package com.lucasbarbosa.purchase;
 
-import com.lucasbarbosa.purchase.api.PurchaseController;
-import com.lucasbarbosa.purchase.service.impl.PurchaseServiceImpl;
+import com.lucasbarbosa.purchase.feign.treasuryapi.TreasuryService;
+import com.lucasbarbosa.purchase.service.PurchaseService;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {"com.lucasbarbosa.purchase.api"})
 public class ContractTestConfiguration {
 
-  @MockBean private PurchaseController purchaseController;
+  @MockBean private PurchaseService purchaseService;
 
-  @MockBean private PurchaseServiceImpl purchaseService;
+  @MockBean private TreasuryService treasuryService;
 }

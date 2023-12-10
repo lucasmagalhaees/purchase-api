@@ -16,7 +16,7 @@ public class DateValidator implements ConstraintValidator<DateConstraint, String
   public boolean isValid(String value, ConstraintValidatorContext context) {
     try {
       LocalDate date = DateUtils.parseDate(value);
-      return date.isBefore(LocalDate.now()) && date.getYear() > 2000;
+      return !date.isAfter(LocalDate.now()) && date.getYear() > 2000;
     } catch (Exception e) {
       return false;
     }

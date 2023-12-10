@@ -6,6 +6,7 @@ import static com.lucasbarbosa.purchase.driver.utils.PurchaseUtils.createEmptySt
 import com.lucasbarbosa.purchase.driver.exception.custom.AttributeInUseException;
 import com.lucasbarbosa.purchase.driver.exception.custom.EntityNotFoundException;
 import com.lucasbarbosa.purchase.driver.exception.custom.FeignIntegrationException;
+import com.lucasbarbosa.purchase.driver.exception.custom.PurchaseNotConvertedException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 import org.springframework.context.MessageSource;
@@ -68,7 +69,7 @@ public class PurchaseApiExceptionHandler {
     return ErrorResponse.ofErrorMessage(request, errorMessage, BAD_REQUEST);
   }
 
-  @ExceptionHandler(AttributeInUseException.class)
+  @ExceptionHandler(EntityNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   public ErrorResponse handleEntityNotFoundException(
       HttpServletRequest request, EntityNotFoundException ex) {
@@ -78,7 +79,20 @@ public class PurchaseApiExceptionHandler {
                 getEntityNotFoundReference(),
                 buildWithThreeParams(ex.getFirst(), ex.getSecond(), ex.getThird()),
                 LocaleContextHolder.getLocale()));
-    return ErrorResponse.ofErrorMessage(request, errorMessage, BAD_REQUEST);
+    return ErrorResponse.ofErrorMessage(request, errorMessage, NOT_FOUND);
+  }
+
+  @ExceptionHandler(PurchaseNotConvertedException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ErrorResponse handlePurchaseNotConvertedException(
+      HttpServletRequest request, PurchaseNotConvertedException ex) {
+    var errorMessage =
+        new ErrorMessage(
+            messageSource.getMessage(
+                getPurchaseNotConverted(),
+                createEmptyStringArray(),
+                LocaleContextHolder.getLocale()));
+    return ErrorResponse.ofErrorMessage(request, errorMessage, NOT_FOUND);
   }
 
   @ExceptionHandler(HttpMessageNotReadableException.class)

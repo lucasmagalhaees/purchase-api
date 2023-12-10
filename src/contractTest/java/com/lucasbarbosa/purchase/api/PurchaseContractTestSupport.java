@@ -8,9 +8,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lucasbarbosa.purchase.feign.treasuryapi.TreasuryService;
+import com.lucasbarbosa.purchase.service.PurchaseService;
 import java.util.Optional;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -29,6 +32,10 @@ public class PurchaseContractTestSupport {
   protected String CONTENT_TYPE = "application/json;charset=UTF-8";
 
   @Autowired protected MockMvc mockMvc;
+
+  @MockBean protected PurchaseService purchaseService;
+
+  @MockBean protected TreasuryService treasuryService;
 
   protected void writeAsJson(Object object) throws JsonProcessingException {
     this.json = new ObjectMapper().writeValueAsString(object);

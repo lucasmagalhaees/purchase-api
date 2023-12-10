@@ -1,7 +1,7 @@
 package com.lucasbarbosa.purchase.model.dto;
 
+import com.lucasbarbosa.purchase.driver.validation.CurrencyConstraint;
 import com.lucasbarbosa.purchase.driver.validation.DateConstraint;
-import com.lucasbarbosa.purchase.driver.validation.DollarConstraint;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotEmpty;
@@ -23,7 +23,7 @@ public class PurchaseRequest {
   @ApiModelProperty(value = "date of purchase", example = "MM/dd/yyyy", required = true)
   private String transactionDate;
 
-  @DollarConstraint
+  @CurrencyConstraint
   @ApiModelProperty(value = "amount of purchase", example = "XX.YY", required = true)
   private String purchaseAmount;
 }

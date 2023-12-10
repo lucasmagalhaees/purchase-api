@@ -2,11 +2,7 @@ package com.lucasbarbosa.purchase.driver.utils;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -19,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseUtils {
 
+  private static final String HIFEN = "-";
   private static final String COMMA = ",";
   private static final String BLANK_SEPARATOR = " ";
   public static final int ONE = 1;
@@ -28,6 +25,10 @@ public class PurchaseUtils {
       "field license_type must be any of INDIVIDUAL, COMPANY";
   private static final String NOT_NULL_MESSAGE = "payload must not be null";
   private static final String MANDATORY_MESSAGE = "%s are mandatory";
+
+  public static String byHifen() {
+    return HIFEN;
+  }
 
   public static String byComma() {
     return COMMA;
@@ -56,33 +57,6 @@ public class PurchaseUtils {
   public static String generateSpecificationQueryPattern(String string) {
 
     return "%" + string.toUpperCase() + "%";
-  }
-
-  public static Long parseAmount(String value) {
-    BigDecimal increment = new BigDecimal("0.01");
-    BigDecimal divided = new BigDecimal(value).divide(increment, 0, RoundingMode.HALF_EVEN);
-    return dollarsToCents(divided.multiply(increment));
-  }
-
-  public static BigDecimal round(BigDecimal value) {
-    BigDecimal increment = new BigDecimal("0.01");
-    BigDecimal divided = value.divide(increment, 0, RoundingMode.UP);
-    return divided.multiply(increment);
-  }
-
-  public static Long dollarsToCents(BigDecimal usd) {
-    Locale usLocale = new Locale("en", "US"); // United States
-    Currency usCurrency = Currency.getInstance(usLocale);
-    int usNumFractionalDigits = usCurrency.getDefaultFractionDigits();
-    return usd.movePointRight(usNumFractionalDigits).longValueExact();
-  }
-
-  public static BigDecimal centsToDollars(Long cents) {
-    BigDecimal bd = new BigDecimal(cents);
-    Locale usLocale = new Locale("en", "US"); // United States
-    Currency usCurrency = Currency.getInstance(usLocale);
-    int usNumFractionalDigits = usCurrency.getDefaultFractionDigits();
-    return bd.movePointLeft(usNumFractionalDigits);
   }
 
   public static boolean hasNulls(List<Object> objects) {

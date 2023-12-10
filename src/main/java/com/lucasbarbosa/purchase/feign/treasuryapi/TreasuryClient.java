@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "treasure", url = "${feign.client.treasury.url}")
 public interface TreasuryClient {
 
-  @Cacheable("exchangeRates")
+  @Cacheable(value = "currencies", cacheManager = "timeoutCacheManager")
   @GetMapping("v1/accounting/od/rates_of_exchange")
   DataVO getExchangeRate(
       @RequestParam(name = "fields") String fields,

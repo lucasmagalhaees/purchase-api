@@ -98,11 +98,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.7.0'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation group: 'org.springframework', name: 'spring-context-support', version: '4.1.7.RELEASE'
+    implementation group: 'com.google.guava', name: 'guava', version: '20.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation('org.springframework.boot:spring-boot-starter-validation')
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-    implementation 'junit:junit:4.13.1'
     compileOnly 'org.projectlombok:lombok'
     compileOnly 'org.hibernate:hibernate-jpamodelgen'
     annotationProcessor('org.hibernate:hibernate-jpamodelgen')
@@ -122,7 +123,7 @@ dependencies {
 task contractTest(type: Test) {
     testClassesDirs = sourceSets.contractTest.output.classesDirs
     classpath = sourceSets.contractTest.runtimeClasspath
-
+    useJUnitPlatform()
     doLast { println 'Contract Tests Done' }
 }
 
@@ -166,10 +167,17 @@ sonarqube {
 }
 
 jacocoTestReport {
-    dependsOn test
-
+    dependsOn test, contractTest
     reports {
         xml.required = true
+    }
+
+    // Gather execution data from all subprojects
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    // Add all relevant sourcesets from the subprojects
+    subprojects.each {
+        sourceSets it.sourceSets.main
     }
 
     afterEvaluate {

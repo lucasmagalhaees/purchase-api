@@ -28,6 +28,7 @@ class PurchaseServiceTestSupport {
   void initializeTest() {
     MockitoAnnotations.initMocks(this);
     service = new PurchaseServiceImpl(repository, treasuryService);
+    purchase = new Purchase();
   }
 
   protected void setUpTestProbes(

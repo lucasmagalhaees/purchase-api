@@ -1,7 +1,5 @@
 package com.lucasbarbosa.purchase.feign.treasuryapi;
 
-import static org.junit.Assert.*;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

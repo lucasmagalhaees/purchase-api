@@ -21,25 +21,9 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
+
 feign:
   client:
-    stock:
-      url: http://www.randomnumberapi.com/api/v1.0
-    agify:
-      url: https://api.agify.io/
-    nationalize:
-      url: https://api.nationalize.io/
-    country:
-      url: https://restcountries.com/v3.1/alpha
-    product:
-      url: https://random-data-api.com/api/number/random_number
-    user:
-      url: https://random-data-api.com/api/
-
-seller:
-  token:
-    validity: 60
-
-stock:
-  minStock: 1
-  maxStock: 10
+    treasury:
+      url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/
+      ttl: 60

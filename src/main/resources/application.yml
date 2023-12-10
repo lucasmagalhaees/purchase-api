@@ -25,3 +25,4 @@ feign:
   client:
     treasury:
       url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service/
+      ttl: 1

@@ -9,10 +9,10 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = DolarValidator.class)
+@Constraint(validatedBy = CurrencyValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DollarConstraint {
+public @interface CurrencyConstraint {
   String message() default "Please provide a valid amount in the format YY.YY";
 
   Class<?>[] groups() default {};

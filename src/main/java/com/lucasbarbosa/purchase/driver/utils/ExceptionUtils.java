@@ -14,6 +14,7 @@ public class ExceptionUtils {
   private static final String MESSAGE_NOT_READABLE = "message.not.readable";
   private static final String FEIGN_INTEGRATION = "service.not.available";
   private static final String ENTITY_NOT_FOUND = "entity.not.found";
+  private static final String PURCHASE_NOT_CONVERTED = "purchase.not.converted";
 
   public static final int BAD_REQUEST = 400;
   public static final int NOT_FOUND = 404;
@@ -21,6 +22,10 @@ public class ExceptionUtils {
   public static final String PURCHASE = "purchase";
 
   public static final String PURCHASE_ID = "purchase_id";
+
+  public static String getPurchaseNotConverted() {
+    return PURCHASE_NOT_CONVERTED;
+  }
 
   public static String getEntityNotFoundReference() {
     return ENTITY_NOT_FOUND;
