@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: purchase_db
+    ports:
+      - "5400:5432"
+    networks:
+      - purchase-network
+  purchaseapi:
+    build: .
+    container_name: purchase_api
+    restart: always
+    environment:
+      PROFILE: stage
+      DATABASE_URL: jdbc:postgresql://db:5432/purchase_db?useSSL=false
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+    ports:
+      - "9092:9090"
+    depends_on:
+      - db
+    networks:
+      - purchase-network
+networks:
+  purchase-network:
+    driver: bridge

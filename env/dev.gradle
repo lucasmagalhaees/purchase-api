@@ -1,0 +1,7 @@
+ext {
+    flyway {
+        url='jdbc:postgresql://localhost:5432/purchase_db'
+        user='root'
+        password='root'
+    }
+}
